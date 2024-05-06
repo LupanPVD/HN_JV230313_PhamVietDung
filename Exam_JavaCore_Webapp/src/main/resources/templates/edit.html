@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Edit Student</h1>
+    <form action="/students/edit/{id}" method="post" th:object="${student}" th:action="@{/students/edit/{id}(id=${student.id})}">
+        <div class="form-group">
+            <label for="studentName">Name:</label>
+            <input type="text" class="form-control" id="studentName" name="studentName" th:field="*{studentName}" required>
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday:</label>
+            <input type="date" class="form-control" id="birthday" name="birthday" th:field="*{birthday}" required>
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select class="form-control" id="sex" name="sex" th:field="*{sex}">
+                <option value="true" th:selected="${student.sex == true}">Male</option>
+                <option value="false" th:selected="${student.sex == false}">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" class="form-control" id="address" name="address" th:field="*{address}" required>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" class="form-control" id="imageUrl" name="imageUrl" th:field="*{imageUrl}">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+</body>
+</html>
